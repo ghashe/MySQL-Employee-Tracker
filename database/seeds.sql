@@ -11,7 +11,7 @@ INSERT INTO department(name) VALUES ('Parasitology');
 -- --------------------------------------------------------------------------
 -- The following script is used to insert data into role table
 -- --------------------------------------------------------------------------
--- Management Departments Roles
+-- Management Department Roles
 INSERT INTO role ( title, salary, department_id) VALUES ('CEO', 15000, 1);
 INSERT INTO role ( title, salary, department_id) VALUES ('Admin and Finance Head', 8000, 1);
 
@@ -23,7 +23,7 @@ INSERT INTO role ( title, salary, department_id) VALUES ('Payroll Accountant', 5
 INSERT INTO role ( title, salary, department_id) VALUES ('Junior Accountant', 4500, 2);
 
 
--- Human Resources Departments Roles
+-- Human Resources Department Roles
 INSERT INTO role ( title, salary, department_id) VALUES ('Human Resources Manager', 7000, 3);
 
 -- Veterinary Department Roles
@@ -33,8 +33,8 @@ INSERT INTO role ( title, salary, department_id) VALUES ('Junior Veterinarian', 
 
 -- Pathology Department Roles
 INSERT INTO role ( title, salary, department_id) VALUES ('Pathology Department Head', 6000, 5);
-INSERT INTO role ( title, salary, department_id) VALUES ('Senior pathologist ', 5800, 5);
-INSERT INTO role ( title, salary, department_id) VALUES ('Junior pathologist ', 6000, 5);
+INSERT INTO role ( title, salary, department_id) VALUES ('Senior pathologist', 5800, 5);
+INSERT INTO role ( title, salary, department_id) VALUES ('Junior pathologist', 6000, 5);
 
 
 -- Parasitology Department Roles
@@ -56,24 +56,23 @@ INSERT INTO employee(first_name, last_name, role_id, manager_id) VALUES ("Connor
 INSERT INTO employee(first_name, last_name, role_id, manager_id) VALUES ("Connor", "Lakour", 15, 1);
 
 -- Employee Under Finance Head
-INSERT INTO employee(first_name, last_name, role_id, manager_id) VALUES ("Devid", "Aron", 2, 3);
-INSERT INTO employee(first_name, last_name, role_id, manager_id) VALUES ("Jeffrey", "Olson", 2, 3);
+INSERT INTO employee(first_name, last_name, role_id, manager_id) VALUES ("Devid", "Aron", 4, 3);
+INSERT INTO employee(first_name, last_name, role_id, manager_id) VALUES ("Jeffrey", "Olson", 5, 3);
 
 -- Employee Under Veterinary Department Head
 INSERT INTO employee(first_name, last_name, role_id, manager_id) VALUES ("Ahmad", "Awais", 10, 9);
 INSERT INTO employee(first_name, last_name, role_id, manager_id) VALUES ("Jason", "Fontana", 11, 9);
 INSERT INTO employee(first_name, last_name, role_id, manager_id) VALUES ("Khadija", "Nemri", 11, 9);
 
--- Employee Under Parasitology Department Head
-INSERT INTO employee(first_name, last_name, role_id, manager_id) VALUES ("Ahmad", "Awais", 10, 12);
-INSERT INTO employee(first_name, last_name, role_id, manager_id) VALUES ("Jason", "Fontana", 11, 12);
-INSERT INTO employee(first_name, last_name, role_id, manager_id) VALUES ("Khadija", "Nemri", 11, 12);
+-- Employee Under Pathology Department Head
+INSERT INTO employee(first_name, last_name, role_id, manager_id) VALUES ("Ahmad", "Awais", 13, 12);
+INSERT INTO employee(first_name, last_name, role_id, manager_id) VALUES ("Jason", "Fontana", 13, 12);
+INSERT INTO employee(first_name, last_name, role_id, manager_id) VALUES ("Khadija", "Nemri", 14, 12);
+
 
 -- Employee Under Parasitology Department Head
-INSERT INTO employee(first_name, last_name, role_id, manager_id) VALUES ("Ahmad", "Awais", 10, 12);
-INSERT INTO employee(first_name, last_name, role_id, manager_id) VALUES ("Jason", "Fontana", 11, 12);
-INSERT INTO employee(first_name, last_name, role_id, manager_id) VALUES ("Khadija", "Nemri", 11, 12);
-
--- Parasitology Department Head
 INSERT INTO employee(first_name, last_name, role_id, manager_id) VALUES ("Jennifer", "Alexandria", 16, 15);
 INSERT INTO employee(first_name, last_name, role_id, manager_id) VALUES ("Payal", "Shah", 17, 15);
+
+
+
