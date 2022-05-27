@@ -1,6 +1,7 @@
 // Importing the required packages that we installed into the node_module
 const mysql = require("mysql2");
 const inquirer = require("inquirer");
+const { lookup } = require("dns");
 require("console.table");
 
 // Setting up a MySQL connection
@@ -107,7 +108,7 @@ function viewAllDepartments() {
   });
 }
 
-// Function that returns all departments
+// Function that returns employees based on their department
 function browseEmployeesByDepartment() {
   console.log("Viewing employees by department\n");
 
@@ -134,7 +135,7 @@ function browseEmployeesByDepartment() {
   });
 }
 
-// User choose the department list, then employees pop up
+// Function for prompting the user to choose department and returns employee based on the user choice
 function promptDepartment(departmentChoices) {
   inquirer
     .prompt([
@@ -164,5 +165,79 @@ function promptDepartment(departmentChoices) {
 
         promptOne();
       });
+    });
+}
+
+// insert data functions
+
+var roleChoices = [];
+var employeeChoices = [];
+var departmentChoices = [];
+
+function lookupRole() {
+  connection.query("SELECT * FROM role", function (err, data) {
+    if (err) throw err;
+    for (i = 0; i < data.length; i++) {
+      roleChoices.push(data[i].id + "-" + data[i].title);
+    }
+  });
+}
+
+function lookupEmployee() {
+  connection.query("SELECT * FROM employee", function (err, data) {
+    if (err) throw err;
+    for (i = 0; i < data.length; i++) {
+      employeeChoices.push(
+        data[i].id + "-" + data[i].first_name + data[i].last_name
+      );
+    }
+  });
+}
+
+function lookupDepartment() {
+  connection.query("SELECT * FROM department", function (err, data) {
+    if (err) throw err;
+    for (i = 0; i < data.length; i++) {
+      departmentChoices.push(data[i].id + "-" + data[i].name);
+    }
+  });
+}
+
+function addNewRole() {
+  lookupRole();
+  lookupEmployee();
+  lookupDepartment();
+  inquirer
+    .prompt([
+      {
+        name: "role",
+        type: "input",
+        message: "What new role do you want to add?",
+      },
+      {
+        name: "department",
+        type: "list",
+        message: "What department would you like to add this role to?",
+        choices: departmentChoices,
+      },
+      {
+        name: "salary",
+        type: "number",
+        message: "What is the salary of the new role?",
+        choices: departmentChoices,
+      },
+    ])
+    .then(function (userAnswer) {
+      console.log(`${userAnswer.role}`);
+      var getDepartmentId = userAnswer.department.split("-");
+      var query = `INSERT INTO role (title, salary, department_id)
+      VALUES ('${userAnswer.role}','${userAnswer.salary}','${getDepartmentId[0]}')`;
+      connection.query(query, function (err, res) {
+        console.log(`<br>`),
+          console.log(
+            `===== The new role ${userAnswer.role} has sucussfully been added!  =====`
+          );
+      });
+      promptOne();
     });
 }
