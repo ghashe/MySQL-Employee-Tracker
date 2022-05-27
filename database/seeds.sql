@@ -1,16 +1,16 @@
-----------------------------------------------------------------------------
+-- --------------------------------------------------------------------------
 -- The following script is used to insert data into department table
-----------------------------------------------------------------------------
-INSERT INTO department(name) VALUES ('Management'),
-INSERT INTO department(name) VALUES ('Accounting'),
-INSERT INTO department(name) VALUES ('Human Resources'),
-INSERT INTO department(name) VALUES ('Veterinary'),
-INSERT INTO department(name) VALUES ('Pathology'),
-INSERT INTO department(name) VALUES ('Parasitology'),
+-- --------------------------------------------------------------------------
+INSERT INTO department(name) VALUES ('Management');
+INSERT INTO department(name) VALUES ('Accounting');
+INSERT INTO department(name) VALUES ('Human Resources');
+INSERT INTO department(name) VALUES ('Veterinary');
+INSERT INTO department(name) VALUES ('Pathology');
+INSERT INTO department(name) VALUES ('Parasitology');
 
-----------------------------------------------------------------------------
+-- --------------------------------------------------------------------------
 -- The following script is used to insert data into role table
-----------------------------------------------------------------------------
+-- --------------------------------------------------------------------------
 -- Management Departments Roles
 INSERT INTO role ( title, salary, department_id) VALUES ('CEO', 15000, 1);
 INSERT INTO role ( title, salary, department_id) VALUES ('Admin and Finance Head', 8000, 1);
@@ -42,9 +42,9 @@ INSERT INTO role ( title, salary, department_id) VALUES ('Parasitology Departmen
 INSERT INTO role ( title, salary, department_id) VALUES ('Senior Parasitologists', 5800, 6);
 INSERT INTO role ( title, salary, department_id) VALUES ('Junior Parasitologists', 6000, 6);
 
-----------------------------------------------------------------------------
+-- --------------------------------------------------------------------------
 -- The following script is used to insert data into employee table
-----------------------------------------------------------------------------
+-- --------------------------------------------------------------------------
 
 -- Employee Under CEO
 INSERT INTO employee(first_name, last_name, role_id) VALUES ("Abyou", "Geletu", 1);
@@ -74,6 +74,6 @@ INSERT INTO employee(first_name, last_name, role_id, manager_id) VALUES ("Ahmad"
 INSERT INTO employee(first_name, last_name, role_id, manager_id) VALUES ("Jason", "Fontana", 11, 12);
 INSERT INTO employee(first_name, last_name, role_id, manager_id) VALUES ("Khadija", "Nemri", 11, 12);
 
---Parasitology Department Head
+-- Parasitology Department Head
 INSERT INTO employee(first_name, last_name, role_id, manager_id) VALUES ("Jennifer", "Alexandria", 16, 15);
 INSERT INTO employee(first_name, last_name, role_id, manager_id) VALUES ("Payal", "Shah", 17, 15);
