@@ -1,5 +1,5 @@
 // Importing the required packages that we installed into the node_module
-const mysql = require("mysql");
+const mysql = require("mysql2");
 const inquirer = require("inquirer");
 require("console.table");
 
@@ -8,18 +8,24 @@ const connection = mysql.createConnection({
   host: "localhost",
 
   // Using your own port number is an option if you do not want to use the default one
+
+  // Default port number
   port: 3306,
 
-  //Enter your password within the citation
+  // Your username
+  user: "root",
+
+  //Enter your own password
   password: "MYSQL@pass123",
-  database: "employeesDB",
+  database: "employeeDB",
 });
 
 connection.connect(function (err) {
   if (err) throw err;
-  console.log("connected as id " + connection.threadId);
+  console.log("connected as id number: " + connection.threadId);
   console.log(
-    `_______________________________________________________________________________________________
+    `    _______________________________________________________________________________________________
+
         ╔═══════╗  ╔═       ═╗   ╔══════╗  ╔         ╔══════╗   ═══   ═══   ╔══════╗   ╔══════╗
         ║          ║  "   "  ║   ║      ║  ║         ║      ║     "   "     ║          ║
         ║          ║   " "   ║   ║══════╝  ║         ║      ║      " "      ║          ║
@@ -28,6 +34,6 @@ connection.connect(function (err) {
         ║          ║         ║   ║         ║         ║      ║       ║       ║          ║
         ╚═══════╝ ╚═╝       ╚═╝ ╚═╝        ╚══════╝  ╚══════╝      ╚═╝      ╚═══════╝  ╚══════╝
     ________________________________________________________________________________________________
-        `
+    `
   );
 });
