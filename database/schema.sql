@@ -1,41 +1,41 @@
-----------------------------------------------------------------
+-- --------------------------------------------------------------
 -- Schema for creating and using employeeDB
-----------------------------------------------------------------
+-- --------------------------------------------------------------
 
 -- If employeeDB already exists, the following script drops it
 DROP DATABASE IF EXISTS employeeDB;
+
 -- This script creates employeeDB
 CREATE DATABASE employeeDB;
 
 USE employeeDB;
 
 
-----------------------------------------------------------------
+-- --------------------------------------------------------------
 -- Schema for creating department table --
-----------------------------------------------------------------
+-- --------------------------------------------------------------
 CREATE TABLE department (
     id int NOT NULL AUTO_INCREMENT,      
-    name VARCHAR(30) NOT NULL, --to hold department name
+    name VARCHAR(30) NOT NULL, -- to hold department name
+    PRIMARY KEY (id)
 );
-INTO department(name) VALUES ('Parasitology'),
 
 
-----------------------------------------------------------------
--- Schema for creating rol table --
-----------------------------------------------------------------
+-- ----------------------------------------------------------------
+-- -- Schema for creating rol table -- --
+-- ----------------------------------------------------------------
 CREATE TABLE role (
     id int NOT NULL AUTO_INCREMENT,    
-    title VARCHAR(30) NOT NULL, --to hold role title
-    salary DECIMAL NOT NULL, --to hold role salary
+    title VARCHAR(30) NOT NULL, -- to hold role title
+    salary DECIMAL NOT NULL, -- to hold role salary
     department_id int, -- to hold reference to department role belongs to
     PRIMARY KEY (id),
     FOREIGN KEY(department_id) REFERENCES department(id)
-)
+);
 
-
-----------------------------------------------------------------
--- Schema for creating employee table --
-----------------------------------------------------------------
+-- ----------------------------------------------------------------
+-- -- Schema for creating employee table -- --
+-- ----------------------------------------------------------------
 
 CREATE TABLE employee (
         id int NOT NULL AUTO_INCREMENT,
