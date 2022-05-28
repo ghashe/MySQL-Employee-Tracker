@@ -74,7 +74,7 @@ function promptOne() {
       } else if (userAnswer.userSelection === "Adding a new role") {
         addNewRole();
       } else if (userAnswer.userSelection === "Add employee") {
-        addEmployee();
+        addNewEmployee();
       } else if (
         userAnswer.userSelection === "Change the role of an employee"
       ) {
@@ -205,6 +205,7 @@ function lookupDepartment() {
   });
 }
 
+// Add new role
 function addNewRole() {
   lookupRole();
   lookupEmployee();
@@ -238,6 +239,56 @@ function addNewRole() {
         console.log(`<br>`),
           console.log(
             `===== The new role ${userAnswer.role} has sucussfully been added!  =====`
+          );
+      });
+      promptOne();
+    });
+}
+
+// Add ne employee
+function addNewEmployee() {
+  lookupEmployee();
+  lookupRole();
+
+  inquirer
+    .prompt([
+      {
+        name: "first_name)",
+        type: "input",
+        message: "Enter the first name of the new employee you want to add",
+      },
+
+      {
+        name: "last_name)",
+        type: "input",
+        message: "Enter the last name of the new employee you want to add",
+      },
+
+      {
+        name: "role",
+        type: "list",
+        message: "Please select the employee's role from the following list",
+        choices: roleChoices,
+      },
+
+      {
+        name: "directed_by",
+        type: "list",
+        message: "Please select the employee's manager from the following list",
+        choices: employeeChoices,
+      },
+    ])
+    .then(function (userAnswer) {
+      console.log(`${userAnswer.role}`);
+
+      var getRoleId = userAnswer.role.split("-");
+      var getDirected_byId = userAnswer.directed_by.split("-");
+      var query = `INSERT INTO employee (first_name, last_name, role_id, manager_id)
+      VALUES ('${userAnswer.first_name}', '${userAnswer.last_name}', '${getRoleId[0]}', '${getDirected_byId[0]}')`;
+      connection.query(query, function (err, res) {
+        console.log(`<br>`),
+          console.log(
+            `===== The new employee has been added successfully! =====`
           );
       });
       promptOne();
