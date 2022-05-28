@@ -78,7 +78,7 @@ function promptOne() {
       } else if (
         userAnswer.userSelection === "Change the role of an employee"
       ) {
-        changeEmployeeRole();
+        updateEmployeeRole();
       } else if (userAnswer.userSelection === "Delete employees") {
         deleteEmployees();
       } else {
@@ -293,4 +293,75 @@ function addNewEmployee() {
       });
       promptOne();
     });
+}
+
+// Update the role of an employee
+function updateEmployeeRole() {
+  connection.query("SELECT * FROM employee", function (err, res) {
+    if (err) throw err;
+
+    inquirer
+      .prompt([
+        {
+          name: "employee_name",
+          type: "list",
+          message:
+            "From the following list, select the employee’s last name you would like to assign to a new role",
+          choices: function () {
+            var empListArr = [];
+            res.forEach((res) => {
+              empListArr.push(res.last_name);
+            });
+            return empListArr;
+          },
+        },
+      ])
+      .then(function (userAnswer) {
+        console.log(userAnswer);
+        var name = userAnswer.employee_name;
+
+        connection.query("SELECT * FROM role", function (err, res) {
+          inquirer
+            .prompt([
+              {
+                name: "role",
+                type: "list",
+                message:
+                  "Select the new role you want to assign to the employee from the following list",
+                choices: function () {
+                  var roleListArr = [];
+                  res.forEach((res) => {
+                    roleListArr.push(res.title);
+                  });
+                  return roleListArr;
+                },
+              },
+            ])
+            .then(function (userAnsewrForRole) {
+              const role = userAnsewrForRole.role;
+              console.log(role);
+
+              connection.query(
+                "SELECT * FROM role WHERE TITLE = ?",
+                [role],
+                function (err, res) {
+                  if (err) throw err;
+                  let role_id = res[0].id;
+
+                  let query =
+                    "UPDATE employee SET role_id = ? WHERE last_name = ?";
+                  let values = [parseInt(role_id), name];
+
+                  connection.query(query, values, function (err, res, fields) {
+                    console.log(
+                      ` \n\n\n ===== ${name}'s role has been updated  to ${role}. ===== \n `
+                    );
+                  });
+                  viewAllEmployees();
+                }
+              );
+            });
+        });
+      });
+  });
 }
