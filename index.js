@@ -27,7 +27,7 @@ connection.connect(function (err) {
   console.log(
     `    _________________________________________________________________________________________________________
                                ╔══════════════════════════════════════════════════╗                        
-                               ║   ABYOU'S          V  E  T       C L I N I C K   ║                        
+                               ║   ABYOU'S          V  E  T        C L I N I C    ║                        
                                ╚══════════════════════════════════════════════════╝                        
         ╔═══════╗  ╔══╗     ╔═╗   ╔══════╗  ╔         ╔══════╗   ═══   ═══   ╔══════╗   ╔══════╗   ╔══════╗
         ║          ║   V   V  ║   ║      ║  ║         ║      ║     V   V     ║          ║          ║       
@@ -253,13 +253,13 @@ function addNewEmployee() {
   inquirer
     .prompt([
       {
-        name: "first_name)",
+        name: "first_name",
         type: "input",
         message: "Enter the first name of the new employee you want to add",
       },
 
       {
-        name: "last_name)",
+        name: "last_name",
         type: "input",
         message: "Enter the last name of the new employee you want to add",
       },
@@ -286,9 +286,9 @@ function addNewEmployee() {
       var query = `INSERT INTO employee (first_name, last_name, role_id, manager_id)
       VALUES ('${userAnswer.first_name}', '${userAnswer.last_name}', '${getRoleId[0]}', '${getDirected_byId[0]}')`;
       connection.query(query, function (err, res) {
-        console.log(`<br>`),
+        console.log(``),
           console.log(
-            `===== The new employee has been added successfully! =====`
+            `\n\n\n ===== The new employee ${userAnswer.first_name} ${userAnswer.last_name} has been added successfully! =====`
           );
       });
       promptOne();
