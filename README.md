@@ -20,7 +20,7 @@
 
     In order to use this application, simply git clone the repo to your local so that you have the Node project there on your local machine, then install the npm package dependencies listed in your package.json file using npm install, and follow clearly written usage guidelines in this file to run the app.
 
-    To use the app locally, using the command line, you should run node server.js to start the application, and then open https://localhost:3010/ in any web browser to launch the app.
+Using the command line, you should run node index.js to start the application.
 
 - You can clone the most recent version of repo into your machine
   https://github.com/ghashe/MySQL-Employee-Tracker
@@ -43,9 +43,9 @@
         - npm i inquirer
         - npm i mysql2
         - npm i console.table
-    Then soon as you run the index.js fileThe, application will launch as and you will be able to use it right away
+    As soon as you run the index.js file, the application will launch and you will be able to use it right away
 
-View walk through video here - [Screencastify](https://drogle.com/file/d/15MWsLb3hn8ZhXSl6RV_6Cd6UZbjsgPTZ/view)<br>
+View walk through video here - [Screencastify](https://drive.google.com/file/d/1BaQQ57KShJdeKoe14vOncIriw8Z8gFBO/view)<br>
 
 ## License
 
