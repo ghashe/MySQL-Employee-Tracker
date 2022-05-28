@@ -1,4 +1,4 @@
-# MySQLEmployee Tracker
+# MySQL Employees Tracker
 
 ![Badge](https://img.shields.io/badge/License-MIT-blue.svg)
 
@@ -9,6 +9,7 @@
 ## Table of Content
 
 - [Installation](#installation)
+- [Tech and Dependencies](#tech-and-dependencies)
 - [Usage](#usage)
 - [License](#license)
 - [Visual](#visual)
@@ -22,19 +23,29 @@
     To use the app locally, using the command line, you should run node server.js to start the application, and then open https://localhost:3010/ in any web browser to launch the app.
 
 - You can clone the most recent version of repo into your machine
-- https://github.com/ghashe/MySQL-Employee-Tracker
+  https://github.com/ghashe/MySQL-Employee-Tracker
+
+## Tech and Dependencies
+
+- Tech
+  - Javascript
+  - Node.js
+- Dependencies
+  - inquirer
+  - mySQL2
+  - console.table
 
 ## Usage
 
     1. Use npm init -y to create a .json file
-    2. Install the npm package dependencies listed in your package.json using npm install
-    3. Install inquirer, mysql2, and console.table using the following commands
-        - npm install inquirer
-        - npm i mysql
+    2. Install the npm package dependencies listed in your package.json using npm i
+    3. Install inquirer, mysql2, and console.table using the following commands;
+        - npm i inquirer
+        - npm i mysql2
         - npm i console.table
-    The application will launch as soon as you run the index.js file, and you will be able to use it right away
+    Then soon as you run the index.js fileThe, application will launch as and you will be able to use it right away
 
-![alt text](./assets/images/MySQL_employee_tracker_screenshot.png)
+View walk through video here - [Screencastify](https://drogle.com/file/d/15MWsLb3hn8ZhXSl6RV_6Cd6UZbjsgPTZ/view)<br>
 
 ## License
 
@@ -42,7 +53,7 @@
 
 ## Visual
 
-![alt text](./public/assets/images/Screenshot.png)
+![alt text](./assets/images/MySQL_employee_tracker_screenshot.png)
 <br>
 
 ## Contributing
