@@ -2,6 +2,7 @@
 const mysql = require("mysql2");
 const inquirer = require("inquirer");
 const { lookup } = require("dns");
+const Connection = require("mysql/lib/Connection");
 require("console.table");
 
 // Setting up a MySQL connection
@@ -306,7 +307,7 @@ function updateEmployeeRole() {
           name: "employee_name",
           type: "list",
           message:
-            "From the following list, select the employee’s last name you would like to assign to a new role",
+            "From the following list, select the employee's last name you would like to assign to a new role",
           choices: function () {
             var empListArr = [];
             res.forEach((res) => {
@@ -364,4 +365,52 @@ function updateEmployeeRole() {
         });
       });
   });
+}
+
+// Delete employees.
+function deleteEmployees() {
+  var query = `SELECT e.id, e.first_name, e.last_name
+  FROM employee e`;
+
+  connection.query(query, function (err, res) {
+    if (err) throw err;
+
+    const removeEmployeeChoices = res.map(({ id, first_name, last_name }) => ({
+      value: id,
+      name: `${id} ${first_name} ${last_name}`,
+    }));
+
+    console.table(res);
+    console.log("empListArrToBeDeleted!\n");
+
+    promptRemove(removeEmployeeChoices);
+  });
+}
+
+// Prompt user to select the employee to be deleted
+function promptRemove(removeEmployeeChoices) {
+  inquirer
+    .prompt([
+      {
+        name: "empId",
+        type: "list",
+        message:
+          "Select the employee you want to remove from the following list",
+        choices: removeEmployeeChoices,
+      },
+    ])
+    .then(function (userAnswer) {
+      var query = `DELETE FROM employee WHERE ?`;
+
+      connection.query(query, { id: userAnswer.empId }, function (err, res) {
+        if (err) throw err;
+
+        console.table(res);
+        console.log(
+          res.affectedRows + " " + "Employee has been successfully deleted!\n"
+        );
+
+        promptOne();
+      });
+    });
 }
