@@ -53,6 +53,7 @@ function promptOne() {
       choices: [
         "View all employees",
         "View all department",
+        "View all roles",
         "Browse employees by departments",
         "Adding a new role",
         "Add employee",
@@ -69,6 +70,8 @@ function promptOne() {
         viewAllEmployees();
       } else if (userAnswer.userSelection === "View all department") {
         viewAllDepartments();
+      } else if (userAnswer.userSelection === "View all roles") {
+        viewAllRoles();
       } else if (
         userAnswer.userSelection === "Browse employees by departments"
       ) {
@@ -107,6 +110,16 @@ function viewAllEmployees() {
 // Function that returns all departments
 function viewAllDepartments() {
   connection.query("SELECT * FROM department", function (err, result, fields) {
+    if (err) throw err;
+    console.table(result);
+    // re-prompt the user for another selection
+    promptOne();
+  });
+}
+
+// Function that returns all roles
+function viewAllRoles() {
+  connection.query("SELECT * FROM role", function (err, result, fields) {
     if (err) throw err;
     console.table(result);
     // re-prompt the user for another selection
