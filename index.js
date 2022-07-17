@@ -56,6 +56,7 @@ function promptOne() {
         "Browse employees by departments",
         "Adding a new role",
         "Add employee",
+        "Add department",
         "Change the role of an employee",
         "Delete employees",
         "End",
@@ -76,6 +77,8 @@ function promptOne() {
         addNewRole();
       } else if (userAnswer.userSelection === "Add employee") {
         addNewEmployee();
+      } else if (userAnswer.userSelection === "Add department") {
+        addNewDepartment();
       } else if (
         userAnswer.userSelection === "Change the role of an employee"
       ) {
@@ -290,6 +293,33 @@ function addNewEmployee() {
         console.log(``),
           console.log(
             `\n\n\n ===== The new employee ${userAnswer.first_name} ${userAnswer.last_name} has been added successfully! =====`
+          );
+      });
+      promptOne();
+    });
+}
+
+// Add department
+function addNewDepartment() {
+  lookupRole();
+  lookupEmployee();
+  lookupDepartment();
+
+  inquirer
+    .prompt([
+      {
+        name: "department",
+        type: "input",
+        message: "Please enter the dipartment's name you want to add: ",
+      },
+    ])
+    .then(function (userAnswer) {
+      var query = `INSERT INTO department (name)
+        VALUES ('${userAnswer.department}')`;
+      connection.query(query, function (err, res) {
+        console.log(``),
+          console.log(
+            `\n\n\n ===== The new department ${userAnswer.department} has been added successfully! =====`
           );
       });
       promptOne();
