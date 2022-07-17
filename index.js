@@ -55,7 +55,7 @@ function promptOne() {
         "View all department",
         "View all roles",
         "Browse employees by departments",
-        "Adding a new role",
+        "Add new role",
         "Add employee",
         "Add department",
         "Change the role of an employee",
@@ -76,7 +76,7 @@ function promptOne() {
         userAnswer.userSelection === "Browse employees by departments"
       ) {
         browseEmployeesByDepartment();
-      } else if (userAnswer.userSelection === "Adding a new role") {
+      } else if (userAnswer.userSelection === "Add new role") {
         addNewRole();
       } else if (userAnswer.userSelection === "Add employee") {
         addNewEmployee();
