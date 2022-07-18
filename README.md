@@ -45,7 +45,11 @@ Using the command line, you should run node index.js to start the application.
         - npm i console.table
     As soon as you run the index.js file, the application will launch and you will be able to use it right away
 
-View walk through video here - [Screencastify](https://drive.google.com/file/d/1BaQQ57KShJdeKoe14vOncIriw8Z8gFBO/view)<br>
+View walk through video here
+
+- [Database setup](https://drive.google.com/file/d/15pQMB-2C2QQconTxnf6h-jXSYMLnfjZP/view)
+- [Features](https://drive.google.com/file/d/1BaQQ57KShJdeKoe14vOncIriw8Z8gFBO/view)
+- [Features](https://drive.google.com/file/d/1WlHlltgb03UDGgsAZQq4rr50B6LBibCw/view)<br>
 
 ## License
 

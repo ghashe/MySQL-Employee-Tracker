@@ -51,13 +51,13 @@ function promptOne() {
       name: "userSelection",
       message: "Please select what you want to do from the options provided!",
       choices: [
-        "View all employees",
-        "View all department",
-        "View all roles",
-        "Browse employees by departments",
-        "Add new role",
-        "Add employee",
         "Add department",
+        "View all department",
+        "Add new role",
+        "View all roles",
+        "Add employee",
+        "View all employees",
+        "Browse employees by departments",
         "Change the role of an employee",
         "Delete employees",
         "End",
@@ -262,7 +262,7 @@ function addNewRole() {
     });
 }
 
-// Add ne employee
+// Add new employee
 function addNewEmployee() {
   lookupEmployee();
   lookupRole();
